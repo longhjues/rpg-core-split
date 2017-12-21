@@ -45,6 +45,8 @@ Window_Command.prototype.clearCommandList = function () {
 Window_Command.prototype.makeCommandList = function () {
 };
 
+// 添加命令
+// 显示的命令名 命令代号（用于回调） 是否可以点击 额外参数
 Window_Command.prototype.addCommand = function (name, symbol, enabled, ext) {
     if (enabled === undefined) {
         enabled = true;
@@ -119,6 +121,7 @@ Window_Command.prototype.selectExt = function (ext) {
     }
 };
 
+// 绘制单个选项
 Window_Command.prototype.drawItem = function (index) {
     var rect = this.itemRectForText(index);
     var align = this.itemTextAlign();

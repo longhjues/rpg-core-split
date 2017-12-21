@@ -539,6 +539,7 @@ Window_Selectable.prototype.isCurrentItemEnabled = function () {
     return true;
 };
 
+// 绘制要显示的选项
 Window_Selectable.prototype.drawAllItems = function () {
     var topIndex = this.topIndex();
     for (var i = 0; i < this.maxPageItems(); i++) {

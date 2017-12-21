@@ -82,6 +82,7 @@ Window_Base.prototype.contentsHeight = function() {
     return this.height - this.standardPadding() * 2;
 };
 
+// 返回行数对应的高度
 Window_Base.prototype.fittingHeight = function(numLines) {
     return numLines * this.lineHeight() + this.standardPadding() * 2;
 };
@@ -252,6 +253,8 @@ Window_Base.prototype.changePaintOpacity = function(enabled) {
     this.contents.paintOpacity = enabled ? 255 : this.translucentOpacity();
 };
 
+// 绘制文字
+// 内容 坐标 最大宽度 对齐方式
 Window_Base.prototype.drawText = function(text, x, y, maxWidth, align) {
     this.contents.drawText(text, x, y, maxWidth, this.lineHeight(), align);
 };
@@ -378,6 +381,7 @@ Window_Base.prototype.processEscapeCharacter = function(code, textState) {
     }
 };
 
+// 绘制ICON图标 并且自动增加坐标值
 Window_Base.prototype.processDrawIcon = function(iconIndex, textState) {
     this.drawIcon(iconIndex, textState.x + 2, textState.y + 2);
     textState.x += Window_Base._iconWidth + 4;
@@ -427,6 +431,7 @@ Window_Base.prototype.calcTextHeight = function(textState, all) {
     return textHeight;
 };
 
+// 绘制icon图标
 Window_Base.prototype.drawIcon = function(iconIndex, x, y) {
     var bitmap = ImageManager.loadSystem('IconSet');
     var pw = Window_Base._iconWidth;
