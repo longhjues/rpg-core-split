@@ -14,15 +14,14 @@ Window_BattleStatus.prototype.constructor = Window_BattleStatus;
 Window_BattleStatus.prototype.initialize = function () {
     var width = this.windowWidth();
     var height = this.windowHeight();
-    var x = Graphics.boxWidth - width;
     var y = Graphics.boxHeight - height;
-    Window_Selectable.prototype.initialize.call(this, x, y, width, height);
+    Window_Selectable.prototype.initialize.call(this, 0, y, width, height);
     this.refresh();
     this.openness = 0;
 };
 
 Window_BattleStatus.prototype.windowWidth = function () {
-    return Graphics.boxWidth - 192;
+    return Graphics.boxWidth
 };
 
 Window_BattleStatus.prototype.windowHeight = function () {
@@ -30,7 +29,7 @@ Window_BattleStatus.prototype.windowHeight = function () {
 };
 
 Window_BattleStatus.prototype.numVisibleRows = function () {
-    return 4;
+    return 3
 };
 
 Window_BattleStatus.prototype.maxItems = function () {

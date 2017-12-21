@@ -46,6 +46,21 @@ Window_Command.prototype.makeCommandList = function () {
 };
 
 // 添加命令
+// 显示的ICON 显示的命令名 命令代号（用于回调） 是否可以点击 额外参数
+Window_Command.prototype.addCommandText = function (iconIndex, name, symbol, enabled, ext) {
+    if (enabled === undefined) {
+        enabled = true;
+    }
+    if (ext === undefined) {
+        ext = null;
+    }
+    if (iconIndex === undefined) {
+        iconIndex = -1
+    }
+    this._list.push({ name: name, symbol: symbol, enabled: enabled, ext: ext, iconIndex: iconIndex });
+};
+
+// 添加命令
 // 显示的命令名 命令代号（用于回调） 是否可以点击 额外参数
 Window_Command.prototype.addCommand = function (name, symbol, enabled, ext) {
     if (enabled === undefined) {
@@ -54,7 +69,7 @@ Window_Command.prototype.addCommand = function (name, symbol, enabled, ext) {
     if (ext === undefined) {
         ext = null;
     }
-    this._list.push({ name: name, symbol: symbol, enabled: enabled, ext: ext });
+    this._list.push({ name: name, symbol: symbol, enabled: enabled, ext: ext, iconIndex: -1 });
 };
 
 Window_Command.prototype.commandName = function (index) {
@@ -127,9 +142,13 @@ Window_Command.prototype.drawItem = function (index) {
     var align = this.itemTextAlign();
     this.resetTextColor();
     this.changePaintOpacity(this.isCommandEnabled(index));
+    if (this._list[index].iconIndex >= 0) {
+        this.processDrawIcon(this._list[index].iconIndex, rect)
+    }
     this.drawText(this.commandName(index), rect.x, rect.y, rect.width, align);
 };
 
+// 设置默认的文本对其方式
 Window_Command.prototype.itemTextAlign = function () {
     return 'left';
 };

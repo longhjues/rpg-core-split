@@ -12,8 +12,9 @@ Window_ActorCommand.prototype = Object.create(Window_Command.prototype);
 Window_ActorCommand.prototype.constructor = Window_ActorCommand;
 
 Window_ActorCommand.prototype.initialize = function () {
-    var y = Graphics.boxHeight - this.windowHeight();
-    Window_Command.prototype.initialize.call(this, 0, y);
+    var x = Graphics.boxWidth - this.windowWidth()
+    var y = Graphics.boxHeight - this.windowHeight() - 200
+    Window_Command.prototype.initialize.call(this, x, y);
     this.openness = 0;
     this.deactivate();
     this._actor = null;
@@ -24,7 +25,7 @@ Window_ActorCommand.prototype.windowWidth = function () {
 };
 
 Window_ActorCommand.prototype.numVisibleRows = function () {
-    return 4;
+    return 3
 };
 
 Window_ActorCommand.prototype.makeCommandList = function () {
@@ -37,7 +38,7 @@ Window_ActorCommand.prototype.makeCommandList = function () {
 };
 
 Window_ActorCommand.prototype.addAttackCommand = function () {
-    this.addCommand(TextManager.attack, 'attack', this._actor.canAttack());
+    this.addCommandText(78, TextManager.attack, 'attack', this._actor.canAttack());
 };
 
 Window_ActorCommand.prototype.addSkillCommands = function () {
@@ -47,16 +48,16 @@ Window_ActorCommand.prototype.addSkillCommands = function () {
     });
     skillTypes.forEach(function (stypeId) {
         var name = $dataSystem.skillTypes[stypeId];
-        this.addCommand(name, 'skill', true, stypeId);
+        this.addCommandText(79, name, 'skill', true, stypeId);
     }, this);
 };
 
 Window_ActorCommand.prototype.addGuardCommand = function () {
-    this.addCommand(TextManager.guard, 'guard', this._actor.canGuard());
+    this.addCommandText(81, TextManager.guard, 'guard', this._actor.canGuard());
 };
 
 Window_ActorCommand.prototype.addItemCommand = function () {
-    this.addCommand(TextManager.item, 'item');
+    this.addCommandText(80, TextManager.item, 'item');
 };
 
 Window_ActorCommand.prototype.setup = function (actor) {

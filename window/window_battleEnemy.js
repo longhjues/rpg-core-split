@@ -21,7 +21,7 @@ Window_BattleEnemy.prototype.initialize = function (x, y) {
 };
 
 Window_BattleEnemy.prototype.windowWidth = function () {
-    return Graphics.boxWidth - 192;
+    return Graphics.boxWidth
 };
 
 Window_BattleEnemy.prototype.windowHeight = function () {
@@ -29,11 +29,11 @@ Window_BattleEnemy.prototype.windowHeight = function () {
 };
 
 Window_BattleEnemy.prototype.numVisibleRows = function () {
-    return 4;
+    return 2
 };
 
 Window_BattleEnemy.prototype.maxCols = function () {
-    return 2;
+    return 3
 };
 
 Window_BattleEnemy.prototype.maxItems = function () {
