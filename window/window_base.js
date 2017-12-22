@@ -249,6 +249,7 @@ Window_Base.prototype.changeTextColor = function(color) {
     this.contents.textColor = color;
 };
 
+// 设置不透明度 完全不透明 半透明
 Window_Base.prototype.changePaintOpacity = function(enabled) {
     this.contents.paintOpacity = enabled ? 255 : this.translucentOpacity();
 };

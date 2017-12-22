@@ -42,23 +42,24 @@ Window_MenuCommand.prototype.makeCommandList = function () {
 Window_MenuCommand.prototype.addMainCommands = function () {
     var enabled = this.areMainCommandsEnabled();
     if (this.needsCommand('item')) {
-        this.addCommand(TextManager.item, 'item', enabled);
+        this.addCommandText(80, TextManager.item, 'item', enabled);
     }
     if (this.needsCommand('skill')) {
-        this.addCommand(TextManager.skill, 'skill', enabled);
+        this.addCommandText(79, TextManager.skill, 'skill', enabled);
     }
     if (this.needsCommand('equip')) {
-        this.addCommand(TextManager.equip, 'equip', enabled);
+        this.addCommandText(81, TextManager.equip, 'equip', enabled);
     }
     if (this.needsCommand('status')) {
-        this.addCommand(TextManager.status, 'status', enabled);
+        this.addCommandText(84, TextManager.status, 'status', enabled);
     }
 };
 
+// 整队
 Window_MenuCommand.prototype.addFormationCommand = function () {
     if (this.needsCommand('formation')) {
         var enabled = this.isFormationEnabled();
-        this.addCommand(TextManager.formation, 'formation', enabled);
+        this.addCommandText(75, TextManager.formation, 'formation', enabled);
     }
 };
 
@@ -68,20 +69,20 @@ Window_MenuCommand.prototype.addOriginalCommands = function () {
 Window_MenuCommand.prototype.addOptionsCommand = function () {
     if (this.needsCommand('options')) {
         var enabled = this.isOptionsEnabled();
-        this.addCommand(TextManager.options, 'options', enabled);
+        this.addCommandText(83, TextManager.options, 'options', enabled);
     }
 };
 
 Window_MenuCommand.prototype.addSaveCommand = function () {
     if (this.needsCommand('save')) {
         var enabled = this.isSaveEnabled();
-        this.addCommand(TextManager.save, 'save', enabled);
+        this.addCommandText(73, TextManager.save, 'save', enabled);
     }
 };
 
 Window_MenuCommand.prototype.addGameEndCommand = function () {
     var enabled = this.isGameEndEnabled();
-    this.addCommand(TextManager.gameEnd, 'gameEnd', enabled);
+    this.addCommandText(74, TextManager.gameEnd, 'gameEnd', enabled);
 };
 
 Window_MenuCommand.prototype.needsCommand = function (name) {
