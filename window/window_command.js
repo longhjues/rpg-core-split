@@ -54,9 +54,6 @@ Window_Command.prototype.addCommandText = function (iconIndex, name, symbol, ena
     if (ext === undefined) {
         ext = null;
     }
-    if (iconIndex === undefined) {
-        iconIndex = -1
-    }
     this._list.push({ name: name, symbol: symbol, enabled: enabled, ext: ext, iconIndex: iconIndex });
 };
 
@@ -157,6 +154,8 @@ Window_Command.prototype.isOkEnabled = function () {
     return true;
 };
 
+// 响应'OK'的回调
+// 判断是否触发特殊回调
 Window_Command.prototype.callOkHandler = function () {
     var symbol = this.currentSymbol();
     if (this.isHandled(symbol)) {
