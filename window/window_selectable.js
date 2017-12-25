@@ -180,20 +180,24 @@ Window_Selectable.prototype.hideHelpWindow = function () {
     }
 };
 
+// 设置事件回调函数
 Window_Selectable.prototype.setHandler = function (symbol, method) {
     this._handlers[symbol] = method;
 };
 
+// 查询是否有回调函数
 Window_Selectable.prototype.isHandled = function (symbol) {
     return !!this._handlers[symbol];
 };
 
+// 执行设置的回调函数
 Window_Selectable.prototype.callHandler = function (symbol) {
     if (this.isHandled(symbol)) {
         this._handlers[symbol]();
     }
 };
 
+// 判断是否打开且活跃
 Window_Selectable.prototype.isOpenAndActive = function () {
     return this.isOpen() && this.active;
 };

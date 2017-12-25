@@ -442,6 +442,7 @@ Window_Base.prototype.drawIcon = function(iconIndex, x, y) {
     this.contents.blt(bitmap, sx, sy, pw, ph, x, y);
 };
 
+// 绘制脸图 底层
 Window_Base.prototype.drawFace = function(faceName, faceIndex, x, y, width, height) {
     width = width || Window_Base._faceWidth;
     height = height || Window_Base._faceHeight;
@@ -475,6 +476,7 @@ Window_Base.prototype.drawGauge = function(x, y, width, rate, color1, color2) {
     this.contents.gradientFillRect(x, gaugeY, fillW, 6, color1, color2);
 };
 
+// HP颜色 角色名字的颜色
 Window_Base.prototype.hpColor = function(actor) {
     if (actor.isDead()) {
         return this.deathColor();
@@ -485,10 +487,12 @@ Window_Base.prototype.hpColor = function(actor) {
     }
 };
 
+// MP颜色
 Window_Base.prototype.mpColor = function(actor) {
     return this.normalColor();
 };
 
+// TP颜色
 Window_Base.prototype.tpColor = function(actor) {
     return this.normalColor();
 };
@@ -497,28 +501,33 @@ Window_Base.prototype.drawActorCharacter = function(actor, x, y) {
     this.drawCharacter(actor.characterName(), actor.characterIndex(), x, y);
 };
 
+// 绘制脸图
 Window_Base.prototype.drawActorFace = function(actor, x, y, width, height) {
     this.drawFace(actor.faceName(), actor.faceIndex(), x, y, width, height);
 };
 
+// 绘制角色名
 Window_Base.prototype.drawActorName = function(actor, x, y, width) {
     width = width || 168;
     this.changeTextColor(this.hpColor(actor));
     this.drawText(actor.name(), x, y, width);
 };
 
+// 绘制职业名
 Window_Base.prototype.drawActorClass = function(actor, x, y, width) {
     width = width || 168;
     this.resetTextColor();
     this.drawText(actor.currentClass().name, x, y, width);
 };
 
+// 绘制角色昵称
 Window_Base.prototype.drawActorNickname = function(actor, x, y, width) {
     width = width || 270;
     this.resetTextColor();
     this.drawText(actor.nickname(), x, y, width);
 };
 
+// 绘制角色等级
 Window_Base.prototype.drawActorLevel = function(actor, x, y) {
     this.changeTextColor(this.systemColor());
     this.drawText(TextManager.levelA, x, y, 48);
@@ -534,8 +543,7 @@ Window_Base.prototype.drawActorIcons = function(actor, x, y, width) {
     }
 };
 
-Window_Base.prototype.drawCurrentAndMax = function(current, max, x, y,
-                                                   width, color1, color2) {
+Window_Base.prototype.drawCurrentAndMax = function(current, max, x, y, width, color1, color2) {
     var labelWidth = this.textWidth('HP');
     var valueWidth = this.textWidth('0000');
     var slashWidth = this.textWidth('/');
