@@ -32,6 +32,7 @@ Window_MenuStatus.prototype.maxItems = function () {
     return $gameParty.size();
 };
 
+// 单个项目的高度
 Window_MenuStatus.prototype.itemHeight = function () {
     var clientHeight = this.height - this.padding * 2;
     return Math.floor(clientHeight / this.numVisibleRows());
