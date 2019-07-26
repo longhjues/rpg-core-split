@@ -66,6 +66,7 @@ SceneManager.initGraphics = function() {
     }
 };
 
+// 获取合适的绘图类型
 SceneManager.preferableRendererType = function() {
     if (Utils.isOptionValid('canvas')) {
         return 'canvas';

@@ -43,12 +43,19 @@ Number.prototype.mod = function(n) {
  * @param {Any} ...args The objects to format
  * @return {String} A formatted string
  */
-String.prototype.format = function() {
-    var args = arguments;
-    return this.replace(/%([0-9]+)/g, function(s, n) {
-        return args[Number(n) - 1];
-    });
-};
+String.prototype.format = function () {
+	// 加上了两个百分号转为一个百分号
+	var args = arguments;
+	return this.replace(/(%+)(\d+)?/g, function (_, $1, $2) {
+		const tmp = $1.substr(0, Math.floor($1.length / 2));
+		if ($2 === undefined) $2 = '';
+		if ($1.length % 2 === 0) {
+			return tmp + $2;
+		} else {
+			return tmp + args[Number($2) - 1];
+		}
+	})
+}
 
 /**
  * Makes a number string with leading zeros.
@@ -2360,6 +2367,7 @@ Graphics._updateAllElements = function() {
  * @method _updateRealScale
  * @private
  */
+// 如果能拉伸，就缩小页面以显示完整长宽比
 Graphics._updateRealScale = function() {
     if (this._stretchEnabled) {
         var h = window.innerWidth / this._width;
@@ -2426,6 +2434,7 @@ Graphics._testCanvasBlendModes = function() {
  * @method _modifyExistingElements
  * @private
  */
+// 修改页面所有元素深度，避免界面的被覆盖
 Graphics._modifyExistingElements = function() {
     var elements = document.getElementsByTagName('*');
     for (var i = 0; i < elements.length; i++) {

@@ -2,6 +2,7 @@
 // main.js
 //=============================================================================
 
+// 加载插件
 PluginManager.setup($plugins);
 
 window.onload = function() {
